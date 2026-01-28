@@ -6,46 +6,46 @@
 ![GitHub Topics](https://img.shields.io/github/topics/mcp?style=for-the-badge)
 ![GitHub Topics](https://img.shields.io/github/topics/github?style=for-the-badge)
 
-Un servidor MCP (Model Context Protocol) mejorado para GitHub con herramientas extendidas y capacidades avanzadas, incluyendo la capacidad de eliminar repositorios y otras funcionalidades exclusivas.
+An enhanced MCP (Model Context Protocol) server for GitHub with extended tools and advanced capabilities, including repository deletion and other exclusive features.
 
-## 🚀 Características principales
+## 🚀 Key Features
 
-### 🆚 Mejoras sobre el servidor MCP GitHub original:
-- **🔧 Herramienta `delete_repository`**: Permite eliminar repositorios de GitHub directamente desde herramientas MCP
-- **⚡ Rendimiento optimizado**: Mejoras en caché y manejo de solicitudes
-- **🛡️ Manejo de errores mejorado**: Mensajes de error más descriptivos y útiles
-- **🔌 Compatibilidad completa**: Mantiene todas las herramientas del servidor oficial de GitHub
+### 🆚 Improvements over the official GitHub MCP server:
+- **🔧 `delete_repository` tool**: Allows deleting GitHub repositories directly from MCP tools
+- **⚡ Performance optimized**: Enhanced caching and request handling
+- **🛡️ Improved error handling**: More descriptive and helpful error messages
+- **🔌 Full compatibility**: Maintains all tools from the official GitHub server
 
-### 🛠️ Herramientas disponibles:
-- **📁 Gestión completa de repositorios** (crear, listar, eliminar)
-- **📝 Gestión de issues y pull requests**
-- **🔍 Búsqueda avanzada** en código, issues y usuarios
-- **📄 Operaciones de archivos y commits**
-- **🏷️ Gestión de releases y tags**
-- **🎯 Y muchas más...**
+### 🛠️ Available tools:
+- **📁 Complete repository management** (create, list, delete)
+- **📝 Issue and pull request management**
+- **🔍 Advanced search** in code, issues, and users
+- **📄 File and commit operations**
+- **🏷️ Release and tag management**
+- **🎯 And many more...**
 
-## 📦 Instalación rápida
+## 📦 Quick Installation
 
-### Para Linux (amd64):
+### For Linux (amd64):
 ```bash
-# Descargar binario precompilado
+# Download precompiled binary
 curl -L https://github.com/lalax-systems/hypergithub-mcp/releases/download/v1.0.0/hypergithub-linux-amd64 -o hypergithub
 chmod +x hypergithub
 
-# O usar script de instalación
+# Or use installation script
 curl -O https://raw.githubusercontent.com/lalax-systems/hypergithub-mcp/main/install.sh
 chmod +x install.sh
 ./install.sh
 ```
 
-### Desde fuente (cualquier plataforma):
+### From source (any platform):
 ```bash
 git clone https://github.com/lalax-systems/hypergithub-mcp.git
 cd hypergithub-mcp
 go build -o hypergithub ./cmd/github-mcp-server
 ```
 
-## 🔧 Configuración
+## 🔧 Configuration
 
 ### Kilo Code / Claude Desktop:
 ```json
@@ -54,13 +54,13 @@ go build -o hypergithub ./cmd/github-mcp-server
     "command": "hypergithub",
     "args": ["stdio"],
     "env": {
-      "GITHUB_PERSONAL_ACCESS_TOKEN": "tu_token_github"
+      "GITHUB_PERSONAL_ACCESS_TOKEN": "your_github_token"
     }
   }
 }
 ```
 
-### VSCode con extensión MCP:
+### VSCode with MCP extension:
 ```json
 {
   "mcp.servers": {
@@ -75,88 +75,88 @@ go build -o hypergithub ./cmd/github-mcp-server
 }
 ```
 
-## 🎯 Uso
+## 🎯 Usage
 
-### Ejemplo: Eliminar un repositorio
+### Example: Delete a repository
 ```bash
-# El binario se ejecuta automáticamente cuando Kilo Code lo necesita
-# No es necesario ejecutarlo manualmente
+# The binary runs automatically when Kilo Code needs it
+# No manual execution required
 
-# Configuración automática:
-# 1. Kilo Code ejecuta: hypergithub stdio
-# 2. Procesa comandos: delete_repository, create_repository, etc.
-# 3. Kilo Code cierra el proceso automáticamente
+# Automatic configuration:
+# 1. Kilo Code executes: hypergithub stdio
+# 2. Processes commands: delete_repository, create_repository, etc.
+# 3. Kilo Code automatically closes the process
 ```
 
-### Herramientas exclusivas de HyperGitHub:
-- `delete_repository` - Elimina repositorios de GitHub
-- Todas las herramientas del servidor oficial + optimizaciones
+### HyperGitHub exclusive tools:
+- `delete_repository` - Delete GitHub repositories
+- All official server tools + optimizations
 
-## 🛠️ Desarrollo
+## 🛠️ Development
 
-### Requisitos:
-- **Go 1.24 o superior**: [Descargar Go](https://go.dev/dl/)
-- **Git**: Para clonar el repositorio
-- **Token de GitHub**: Con permisos adecuados
+### Requirements:
+- **Go 1.24 or higher**: [Download Go](https://go.dev/dl/)
+- **Git**: For cloning the repository
+- **GitHub token**: With appropriate permissions
 
-### Compilación:
+### Compilation:
 ```bash
 go mod download
 go build -o hypergithub ./cmd/github-mcp-server
 ```
 
-### Ejecución de pruebas:
+### Running tests:
 ```bash
 go test ./...
 go vet ./...
 go fmt ./...
 ```
 
-## 📁 Estructura del proyecto
+## 📁 Project Structure
 ```
 hypergithub-mcp/
-├── cmd/              # Punto de entrada principal
-├── internal/         # Código interno del servidor
-├── pkg/              # Paquetes públicos
-├── docs/             # Documentación
-├── examples/         # Ejemplos de configuración
-├── dist/             # Binarios compilados
-└── script/           # Scripts de utilidad
+├── cmd/              # Main entry point
+├── internal/         # Server internal code
+├── pkg/              # Public packages
+├── docs/             # Documentation
+├── examples/         # Configuration examples
+├── dist/             # Compiled binaries
+└── script/           # Utility scripts
 ```
 
-## 🤝 Contribución
+## 🤝 Contribution
 
-¡Las contribuciones son bienvenidas! Por favor, lee [CONTRIBUTING.md](CONTRIBUTING.md) para más detalles.
+Contributions are welcome! Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details.
 
-### Cómo contribuir:
-1. Haz fork del repositorio
-2. Crea una rama con un nombre descriptivo
-3. Realiza tus cambios
-4. Envía un pull request
+### How to contribute:
+1. Fork the repository
+2. Create a descriptive branch
+3. Make your changes
+4. Submit a pull request
 
-## 📄 Licencia
+## 📄 License
 
-Este proyecto está licenciado bajo la licencia MIT - ver [LICENSE](LICENSE) para más detalles.
+This project is licensed under the MIT License - see [LICENSE](LICENSE) for details.
 
-## 🔗 Enlaces útiles
+## 🔗 Useful Links
 
-- [📚 Documentación completa](https://github.com/lalax-systems/hypergithub-mcp/wiki)
-- [🐛 Reportar issues](https://github.com/lalax-systems/hypergithub-mcp/issues)
-- [💬 Discusiones](https://github.com/lalax-systems/hypergithub-mcp/discussions)
+- [📚 Complete documentation](https://github.com/lalax-systems/hypergithub-mcp/wiki)
+- [🐛 Report issues](https://github.com/lalax-systems/hypergithub-mcp/issues)
+- [💬 Discussions](https://github.com/lalax-systems/hypergithub-mcp/discussions)
 - [📦 Releases](https://github.com/lalax-systems/hypergithub-mcp/releases)
-- [🔧 Guía de compilación](COMPILATION.md)
+- [🔧 Build guide](COMPILATION.md)
 - [📋 Changelog](CHANGELOG.md)
 
-## ⭐ Demostración
+## ⭐ Demonstration
 
-Este servidor ha sido probado y demostrado con:
-- ✅ Creación y eliminación de repositorios
-- ✅ Gestión completa de issues y PRs
-- ✅ Integración con múltiples clientes MCP
-- ✅ Rendimiento superior al servidor original
+This server has been tested and demonstrated with:
+- ✅ Repository creation and deletion
+- ✅ Complete issue and PR management
+- ✅ Integration with multiple MCP clients
+- ✅ Performance superior to the original server
 
 ---
 
-**Nota**: Este es un spin-off mejorado del servidor MCP GitHub oficial (`github/github-mcp-server`) con funcionalidades extendidas y optimizaciones.
+**Note**: This is an enhanced spin-off of the official GitHub MCP server (`github/github-mcp-server`) with extended functionality and optimizations.
 
 **Keywords**: MCP, Model Context Protocol, GitHub, Automation, Go, Server, CLI, DevTools, API, Integration, AI Assistant, Kilo Code, VSCode, Claude Desktop
