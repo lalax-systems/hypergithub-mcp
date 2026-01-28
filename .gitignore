@@ -1,0 +1,31 @@
+# Binaries
+hypergithub
+hypergithub-*
+*.exe
+*.out
+
+# Dependencies
+vendor/
+node_modules/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Build artifacts
+dist/
+build/
+coverage.out
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Test cache
+test-results/
