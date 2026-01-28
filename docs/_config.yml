@@ -1,0 +1,112 @@
+# Configuración de GitHub Pages para HyperGitHub MCP
+
+title: HyperGitHub MCP Server
+description: Servidor MCP mejorado para GitHub con herramientas extendidas
+baseurl: "" # el subpath de tu sitio, e.g. /blog
+url: "https://hypergithub-mcp.lalax.com" # el dominio base de tu sitio
+
+# Configuración de GitHub Pages
+remote_theme: pages-themes/cayman@v0.2.0
+plugins:
+  - jekyll-remote-theme
+
+# Configuración del tema
+theme: jekyll-theme-cayman
+
+# Configuración del sitio
+author:
+  name: Javier Gómez
+  email: info@lalax.com
+  twitter: lalax_systems
+  github: lalax-systems
+
+# Configuración de navegación
+header_pages:
+  - index.md
+
+# Configuración de enlaces
+links:
+  - title: GitHub Repository
+    url: https://github.com/lalax-systems/hypergithub-mcp
+  - title: Releases
+    url: https://github.com/lalax-systems/hypergithub-mcp/releases
+  - title: Issues
+    url: https://github.com/lalax-systems/hypergithub-mcp/issues
+  - title: Discussions
+    url: https://github.com/lalax-systems/hypergithub-mcp/discussions
+
+# Configuración de SEO
+google_analytics: # Tu ID de Google Analytics
+twitter:
+  username: lalax_systems
+  card: summary_large_image
+
+# Configuración de compilación
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+
+# Excluir archivos de la compilación
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - .gitignore
+  - .github/
+  - .vscode/
+  - .idea/
+  - .DS_Store
+
+# Incluir archivos específicos
+include:
+  - _includes
+  - _layouts
+  - _sass
+  - assets
+
+# Configuración de sass
+sass:
+  sass_dir: _sass
+  style: compressed
+
+# Configuración de feed
+feed:
+  path: atom.xml
+
+# Configuración de tiempo
+timezone: Europe/Madrid
+
+# Configuración de idioma
+lang: es-ES
+
+# Configuración de favicon
+favicon: /assets/favicon.ico
+
+# Configuración de logo
+logo: /assets/logo.png
+
+# Configuración de colores
+color:
+  primary: "#0366d6"
+  secondary: "#28a745"
+  accent: "#6f42c1"
+
+# Configuración de badges
+badges:
+  - title: "Go Version"
+    image: "https://img.shields.io/github/go-mod/go-version/lalax-systems/hypergithub-mcp"
+    url: "https://golang.org/"
+  - title: "License"
+    image: "https://img.shields.io/github/license/lalax-systems/hypergithub-mcp"
+    url: "https://github.com/lalax-systems/hypergithub-mcp/blob/main/LICENSE"
+  - title: "Release"
+    image: "https://img.shields.io/github/v/release/lalax-systems/hypergithub-mcp"
+    url: "https://github.com/lalax-systems/hypergithub-mcp/releases"
+  - title: "GitHub Topics"
+    image: "https://img.shields.io/github/topics/mcp"
+    url: "https://github.com/topics/mcp"
