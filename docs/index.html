@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HyperGitHub MCP Server - Documentación</title>
+    <meta name="description" content="Servidor MCP mejorado para GitHub con herramientas extendidas">
+    <meta name="keywords" content="MCP, GitHub, Model Context Protocol, Go, Server, CLI, DevTools">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.2.0/github-markdown.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #24292e;
+            background-color: #f6f8fa;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #0366d6 0%, #28a745 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .badges {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .badges img {
+            height: 28px;
+        }
+        
+        .content {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+        
+        .main-content {
+            background: white;
+            border-radius: 12px;
+            padding: 3rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        
+        .sidebar {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            height: fit-content;
+        }
+        
+        h2 {
+            color: #0366d6;
+            margin: 2rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e1e4e8;
+        }
+        
+        h3 {
+            color: #28a745;
+            margin: 1.5rem 0 0.5rem;
+        }
+        
+        .markdown-body {
+            font-size: 16px;
+        }
+        
+        .markdown-body pre {
+            background: #f6f8fa;
+            border-radius: 6px;
+            padding: 1rem;
+            overflow-x: auto;
+        }
+        
+        .markdown-body code {
+            background: #f6f8fa;
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+            font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+        }
+        
+        .nav-links {
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .nav-links a {
+            color: #0366d6;
+            text-decoration: none;
+            display: block;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            transition: all 0.2s ease;
+        }
+        
+        .nav-links a:hover {
+            background: #f6f8fa;
+            color: #005cc5;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        
+        .btn-primary {
+            background: #0366d6;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #005cc5;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background: #28a745;
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background: #22863a;
+            transform: translateY(-2px);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            color: #0366d6;
+            border: 2px solid #0366d6;
+        }
+        
+        .btn-outline:hover {
+            background: #0366d6;
+            color: white;
+        }
+        
+        footer {
+            background: #24292e;
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            margin-top: 4rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: #959da5;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
+            
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .main-content, .sidebar {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>HyperGitHub MCP Server</h1>
+            <p>Servidor MCP mejorado para GitHub con herramientas extendidas y capacidades avanzadas</p>
+            
+            <div class="badges">
+                <img src="https://img.shields.io/github/v/release/lalax-systems/hypergithub-mcp?style=for-the-badge" alt="GitHub Release">
+                <img src="https://img.shields.io/github/go-mod/go-version/lalax-systems/hypergithub-mcp?style=for-the-badge" alt="Go Version">
+                <img src="https://img.shields.io/github/license/lalax-systems/hypergithub-mcp?style=for-the-badge" alt="License">
+                <img src="https://img.shields.io/github/topics/mcp?style=for-the-badge" alt="GitHub Topics">
+            </div>
+            
+            <div class="cta-buttons">
+                <a href="https://github.com/lalax-systems/hypergithub-mcp" class="btn btn-primary">Ver en GitHub</a>
+                <a href="https://github.com/lalax-systems/hypergithub-mcp/releases" class="btn btn-secondary">Descargar Release</a>
+                <a href="#documentacion" class="btn btn-outline">Leer Documentación</a>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="content">
+            <main class="main-content">
+                <div class="markdown-body">
+                    <h2 id="documentacion">Documentación</h2>
+                    
+                    <p>Bienvenido a la documentación de HyperGitHub MCP Server. Esta página está temporalmente en construcción mientras se genera la documentación completa con Jekyll.</p>
+                    
+                    <h3>📖 Documentación completa</h3>
+                    <p>La documentación completa está disponible en formato Markdown:</p>
+                    <ul>
+                        <li><a href="index.md">Documentación principal (Markdown)</a></li>
+                        <li><a href="https://github.com/lalax-systems/hypergithub-mcp/blob/main/README.md">README del proyecto</a></li>
+                        <li><a href="https://github.com/lalax-systems/hypergithub-mcp/wiki">Wiki del proyecto</a></li>
+                    </ul>
+                    
+                    <h3>🚀 Instalación rápida</h3>
+                    <pre><code># Para Linux (amd64)
+curl -L https://github.com/lalax-systems/hypergithub-mcp/releases/download/v1.0.0/hypergithub-linux-amd64 -o hypergithub
+chmod +x hypergithub</code></pre>
+                    
+                    <h3>🔧 Configuración básica</h3>
+                    <pre><code>{
+  "hypergithub": {
+    "command": "hypergithub",
+    "args": ["stdio"],
+    "env": {
+      "GITHUB_PERSONAL_ACCESS_TOKEN": "tu_token_github"
+    }
+  }
+}</code></pre>
+                    
+                    <h3>🛠️ Herramientas disponibles</h3>
+                    <ul>
+                        <li><strong>delete_repository</strong> - Eliminar repositorios (exclusivo de HyperGitHub)</li>
+                        <li><strong>create_repository</strong> - Crear nuevos repositorios</li>
+                        <li><strong>list_repositories</strong> - Listar repositorios</li>
+                        <li><strong>issue_write/read</strong> - Gestión de issues</li>
+                        <li><strong>pull_request_read/write</strong> - Gestión de PRs</li>
+                        <li><strong>search_code</strong> - Búsqueda en código</li>
+                        <li>Y muchas más...</li>
+                    </ul>
+                    
+                    <h3>📞 Soporte</h3>
+                    <p>Si necesitas ayuda:</p>
+                    <ul>
+                        <li><a href="https://github.com/lalax-systems/hypergithub-mcp/issues">Reportar un issue</a></li>
+                        <li><a href="https://github.com/lalax-systems/hypergithub-mcp/discussions">Participar en discusiones</a></li>
+                        <li>Email: info@lalax.com</li>
+                    </ul>
+                </div>
+            </main>
+            
+            <aside class="sidebar">
+                <h3>Navegación</h3>
+                <ul class="nav-links">
+                    <li><a href="#documentacion">Documentación</a></li>
+                    <li><a href="https://github.com/lalax-systems/hypergithub-mcp">Repositorio GitHub</a></li>
+                    <li><a href="https://github.com/lalax-systems/hypergithub-mcp/releases">Releases</a></li>
+                    <li><a href="https://github.com/lalax-systems/hypergithub-mcp/issues">Issues</a></li>
+                    <li><a href="https://github.com/lalax-systems/hypergithub-mcp/discussions">Discusiones</a></li>
+                    <li><a href="https://github.com/lalax-systems/hypergithub-mcp/wiki">Wiki</a></li>
+                    <li><a href="COMPILATION.md">Guía de compilación</a></li>
+                    <li><a href="CONTRIBUTING.md">Contribuir</a></li>
+                    <li><a href="CHANGELOG.md">Changelog</a></li>
+                </ul>
+                
+                <h3>Enlaces útiles</h3>
+                <ul class="nav-links">
+                    <li><a href="https://modelcontextprotocol.io">Model Context Protocol</a></li>
+                    <li><a href="https://github.com/github/github-mcp-server">Servidor MCP oficial</a></li>
+                    <li><a href="https://docs.github.com">Documentación de GitHub</a></li>
+                    <li><a href="https://golang.org">Go Programming Language</a></li>
+                </ul>
+                
+                <h3>Estadísticas</h3>
+                <p><strong>Versión actual:</strong> 1.0.0</p>
+                <p><strong>Licencia:</strong> MIT</p>
+                <p><strong>Lenguaje:</strong> Go 1.24+</p>
+                <p><strong>Plataformas:</strong> Linux, macOS, Windows</p>
+            </aside>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>HyperGitHub MCP Server - Un servidor MCP mejorado para GitHub</p>
+            
+            <div class="footer-links">
+                <a href="https://github.com/lalax-systems/hypergithub-mcp">GitHub</a>
+                <a href="https://lalax.com">Lalax Systems</a>
+                <a href="mailto:info@lalax.com">Contacto</a>
+                <a href="https://twitter.com/lalax_systems">Twitter</a>
+                <a href="LICENSE">Licencia MIT</a>
+            </div>
+            
+            <p>&copy; 2026 Lalax Systems. Todos los derechos reservados.</p>
+            <p>Este proyecto es un spin-off mejorado del servidor MCP GitHub oficial.</p>
+        </div>
+    </footer>
+</body>
+</html>
