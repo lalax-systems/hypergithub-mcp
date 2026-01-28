@@ -1,52 +1,52 @@
-# Documentación de HyperGitHub MCP
+# HyperGitHub MCP Documentation
 
-Esta carpeta contiene la documentación para GitHub Pages del proyecto HyperGitHub MCP Server.
+This folder contains the GitHub Pages documentation for the HyperGitHub MCP Server project.
 
-## Estructura de archivos
+## File Structure
 
-- `index.html` - Página principal HTML (temporal)
-- `index.md` - Documentación principal en Markdown
-- `_config.yml` - Configuración de Jekyll para GitHub Pages
-- `CNAME` - Configuración de dominio personalizado
+- `index.html` - Main HTML page (temporary)
+- `index.md` - Main documentation in Markdown
+- `_config.yml` - Jekyll configuration for GitHub Pages
+- `CNAME` - Custom domain configuration
 
-## Configuración de GitHub Pages
+## GitHub Pages Configuration
 
-GitHub Pages está configurado para:
-- **Rama**: `main`
-- **Carpeta**: `/docs`
-- **Dominio personalizado**: `hypergithub-mcp.lalax.com`
-- **Tema**: Cayman (jekyll-theme-cayman)
+GitHub Pages is configured to:
+- **Branch**: `main`
+- **Folder**: `/docs`
+- **Custom domain**: `hypergithub-mcp.lalax.com`
+- **Theme**: Cayman (jekyll-theme-cayman)
 
-## Desarrollo local
+## Local Development
 
-Para probar la documentación localmente:
+To test documentation locally:
 
 ```bash
-# Instalar Jekyll (requiere Ruby)
+# Install Jekyll (requires Ruby)
 gem install bundler jekyll
 
-# Clonar el repositorio
+# Clone the repository
 git clone https://github.com/lalax-systems/hypergithub-mcp.git
 cd hypergithub-mcp/docs
 
-# Instalar dependencias
+# Install dependencies
 bundle install
 
-# Ejecutar servidor local
+# Run local server
 bundle exec jekyll serve
 
-# Abrir en navegador: http://localhost:4000
+# Open in browser: http://localhost:4000
 ```
 
-## Actualización de documentación
+## Documentation Updates
 
-1. Editar los archivos Markdown en la carpeta `/docs`
-2. Hacer commit y push a la rama `main`
-3. GitHub Pages se reconstruirá automáticamente
+1. Edit Markdown files in the `/docs` folder
+2. Commit and push to the `main` branch
+3. GitHub Pages will rebuild automatically
 
-## Enlaces
+## Links
 
-- [Sitio de GitHub Pages](https://lalax-systems.github.io/hypergithub-mcp/)
-- [Dominio personalizado](http://hypergithub-mcp.lalax.com/)
-- [Repositorio GitHub](https://github.com/lalax-systems/hypergithub-mcp)
-- [Documentación del tema Cayman](https://github.com/pages-themes/cayman)
+- [GitHub Pages site](https://lalax-systems.github.io/hypergithub-mcp/)
+- [Custom domain](http://hypergithub-mcp.lalax.com/)
+- [GitHub Repository](https://github.com/lalax-systems/hypergithub-mcp)
+- [Cayman theme documentation](https://github.com/pages-themes/cayman)
