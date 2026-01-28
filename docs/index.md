@@ -1,48 +1,48 @@
-# HyperGitHub MCP - Documentación
+# HyperGitHub MCP - Documentation
 
-Bienvenido a la documentación oficial de HyperGitHub MCP Server. Esta documentación está disponible en [hypergithub-mcp.lalax.com](https://hypergithub-mcp.lalax.com).
+Welcome to the official documentation of HyperGitHub MCP Server. This documentation is available at [hypergithub-mcp.lalax.com](https://hypergithub-mcp.lalax.com).
 
-## 📖 Tabla de contenidos
+## 📖 Table of Contents
 
-1. [Introducción](#introducción)
-2. [Instalación](#instalación)
-3. [Configuración](#configuración)
-4. [Herramientas disponibles](#herramientas-disponibles)
-5. [Ejemplos de uso](#ejemplos-de-uso)
-6. [Desarrollo](#desarrollo)
+1. [Introduction](#introduction)
+2. [Installation](#installation)
+3. [Configuration](#configuration)
+4. [Available Tools](#available-tools)
+5. [Usage Examples](#usage-examples)
+6. [Development](#development)
 7. [FAQ](#faq)
-8. [Soporte](#soporte)
+8. [Support](#support)
 
-## Introducción
+## Introduction
 
-HyperGitHub MCP es un servidor mejorado del protocolo MCP (Model Context Protocol) para GitHub. Proporciona todas las funcionalidades del servidor oficial de GitHub MCP, más herramientas adicionales y optimizaciones de rendimiento.
+HyperGitHub MCP is an enhanced MCP (Model Context Protocol) server for GitHub. It provides all the functionality of the official GitHub MCP server, plus additional tools and performance optimizations.
 
-### ¿Qué es MCP?
+### What is MCP?
 
-El Model Context Protocol (MCP) es un protocolo estándar que permite a los asistentes de IA como Kilo Code, Claude Desktop y otros comunicarse con herramientas externas de forma segura y estandarizada.
+The Model Context Protocol (MCP) is a standard protocol that allows AI assistants like Kilo Code, Claude Desktop, and others to communicate with external tools in a secure and standardized way.
 
-### Características principales
+### Key Features
 
-- **Herramienta `delete_repository` exclusiva**: Permite eliminar repositorios directamente
-- **Rendimiento optimizado**: Mejoras en caché y manejo de solicitudes
-- **Compatibilidad completa**: 100% compatible con el servidor oficial
-- **Código abierto**: Licencia MIT, libre para usar y modificar
+- **Exclusive `delete_repository` tool**: Allows deleting repositories directly
+- **Performance optimized**: Enhanced caching and request handling
+- **Full compatibility**: 100% compatible with the official server
+- **Open source**: MIT licensed, free to use and modify
 
-## Instalación
+## Installation
 
-### Método 1: Binario precompilado (recomendado)
+### Method 1: Precompiled binary (recommended)
 
 ```bash
-# Para Linux (amd64)
+# For Linux (amd64)
 curl -L https://github.com/lalax-systems/hypergithub-mcp/releases/download/v1.0.0/hypergithub-linux-amd64 -o hypergithub
 chmod +x hypergithub
 
-# Para macOS (arm64)
+# For macOS (arm64)
 curl -L https://github.com/lalax-systems/hypergithub-mcp/releases/download/v1.0.0/hypergithub-darwin-arm64 -o hypergithub
 chmod +x hypergithub
 ```
 
-### Método 2: Script de instalación
+### Method 2: Installation script
 
 ```bash
 curl -O https://raw.githubusercontent.com/lalax-systems/hypergithub-mcp/main/install.sh
@@ -50,7 +50,7 @@ chmod +x install.sh
 ./install.sh
 ```
 
-### Método 3: Compilar desde fuente
+### Method 3: Build from source
 
 ```bash
 git clone https://github.com/lalax-systems/hypergithub-mcp.git
@@ -58,9 +58,9 @@ cd hypergithub-mcp
 go build -o hypergithub ./cmd/github-mcp-server
 ```
 
-## Configuración
+## Configuration
 
-### Configuración básica para Kilo Code
+### Basic configuration for Kilo Code
 
 ```json
 {
@@ -68,13 +68,13 @@ go build -o hypergithub ./cmd/github-mcp-server
     "command": "hypergithub",
     "args": ["stdio"],
     "env": {
-      "GITHUB_PERSONAL_ACCESS_TOKEN": "tu_token_github"
+      "GITHUB_PERSONAL_ACCESS_TOKEN": "your_github_token"
     }
   }
 }
 ```
 
-### Configuración para VSCode
+### Configuration for VSCode
 
 ```json
 {
@@ -90,7 +90,7 @@ go build -o hypergithub ./cmd/github-mcp-server
 }
 ```
 
-### Configuración para Claude Desktop
+### Configuration for Claude Desktop
 
 ```json
 {
@@ -98,95 +98,95 @@ go build -o hypergithub ./cmd/github-mcp-server
     "command": "hypergithub",
     "args": ["stdio"],
     "env": {
-      "GITHUB_PERSONAL_ACCESS_TOKEN": "tu_token_github"
+      "GITHUB_PERSONAL_ACCESS_TOKEN": "your_github_token"
     }
   }
 }
 ```
 
-## Herramientas disponibles
+## Available Tools
 
-### Gestión de repositorios
-- `create_repository` - Crear un nuevo repositorio
-- `delete_repository` - Eliminar un repositorio (exclusivo de HyperGitHub)
-- `list_repositories` - Listar repositorios
-- `fork_repository` - Hacer fork de un repositorio
+### Repository Management
+- `create_repository` - Create a new repository
+- `delete_repository` - Delete a repository (HyperGitHub exclusive)
+- `list_repositories` - List repositories
+- `fork_repository` - Fork a repository
 
-### Gestión de issues
-- `issue_write` - Crear o actualizar issues
-- `issue_read` - Leer información de issues
-- `list_issues` - Listar issues
-- `search_issues` - Buscar issues
+### Issue Management
+- `issue_write` - Create or update issues
+- `issue_read` - Read issue information
+- `list_issues` - List issues
+- `search_issues` - Search issues
 
-### Gestión de pull requests
-- `create_pull_request` - Crear un pull request
-- `pull_request_read` - Leer información de PRs
-- `list_pull_requests` - Listar PRs
-- `merge_pull_request` - Fusionar un PR
+### Pull Request Management
+- `create_pull_request` - Create a pull request
+- `pull_request_read` - Read PR information
+- `list_pull_requests` - List PRs
+- `merge_pull_request` - Merge a PR
 
-### Operaciones de archivos
-- `create_or_update_file` - Crear o actualizar archivos
-- `get_file_contents` - Obtener contenido de archivos
-- `delete_file` - Eliminar archivos
-- `push_files` - Subir múltiples archivos
+### File Operations
+- `create_or_update_file` - Create or update files
+- `get_file_contents` - Get file contents
+- `delete_file` - Delete files
+- `push_files` - Push multiple files
 
-### Búsqueda avanzada
-- `search_code` - Buscar en código
-- `search_repositories` - Buscar repositorios
-- `search_users` - Buscar usuarios
-- `search_pull_requests` - Buscar PRs
+### Advanced Search
+- `search_code` - Search in code
+- `search_repositories` - Search repositories
+- `search_users` - Search users
+- `search_pull_requests` - Search PRs
 
-### Gestión de releases
-- `create_release` - Crear un release
-- `list_releases` - Listar releases
-- `get_latest_release` - Obtener el último release
+### Release Management
+- `create_release` - Create a release
+- `list_releases` - List releases
+- `get_latest_release` - Get the latest release
 
-## Ejemplos de uso
+## Usage Examples
 
-### Ejemplo 1: Crear y eliminar un repositorio
+### Example 1: Create and delete a repository
 
 ```bash
-# El asistente de IA ejecutará automáticamente:
-# 1. create_repository para crear "repo-de-prueba"
-# 2. Realizar operaciones en el repositorio
-# 3. delete_repository para eliminarlo cuando ya no sea necesario
+# The AI assistant will automatically execute:
+# 1. create_repository to create "test-repo"
+# 2. Perform operations in the repository
+# 3. delete_repository to delete it when no longer needed
 ```
 
-### Ejemplo 2: Buscar código en GitHub
+### Example 2: Search code on GitHub
 
 ```bash
-# Buscar todas las funciones llamadas "calculateTotal" en repositorios de JavaScript
+# Search for all functions named "calculateTotal" in JavaScript repositories
 search_code("calculateTotal language:JavaScript")
 ```
 
-### Ejemplo 3: Crear un issue con etiquetas
+### Example 3: Create an issue with labels
 
 ```bash
-# Crear un issue de tipo bug con etiquetas
+# Create a bug-type issue with labels
 issue_write({
-  title: "Error en cálculo de totales",
-  body: "La función calculateTotal no suma correctamente los impuestos",
+  title: "Error in total calculation",
+  body: "The calculateTotal function doesn't sum taxes correctly",
   labels: ["bug", "high-priority"]
 })
 ```
 
-## Desarrollo
+## Development
 
-### Estructura del proyecto
+### Project Structure
 
 ```
 hypergithub-mcp/
-├── cmd/github-mcp-server/     # Punto de entrada principal
-├── internal/                  # Código interno del servidor
-│   ├── ghmcp/                # Implementación del servidor MCP
-│   └── toolsnaps/            # Snapshots de herramientas
-├── pkg/                      # Paquetes públicos
-├── docs/                     # Documentación
-├── examples/                 # Ejemplos de configuración
-└── script/                   # Scripts de utilidad
+├── cmd/github-mcp-server/     # Main entry point
+├── internal/                  # Server internal code
+│   ├── ghmcp/                # MCP server implementation
+│   └── toolsnaps/            # Tool snapshots
+├── pkg/                      # Public packages
+├── docs/                     # Documentation
+├── examples/                 # Configuration examples
+└── script/                   # Utility scripts
 ```
 
-### Compilación para diferentes plataformas
+### Compilation for different platforms
 
 ```bash
 # Linux (amd64)
@@ -199,54 +199,54 @@ GOOS=darwin GOARCH=arm64 go build -o hypergithub-darwin-arm64 ./cmd/github-mcp-s
 GOOS=windows GOARCH=amd64 go build -o hypergithub-windows-amd64.exe ./cmd/github-mcp-server
 ```
 
-### Ejecución de pruebas
+### Running tests
 
 ```bash
-# Ejecutar todas las pruebas
+# Run all tests
 go test ./...
 
-# Ejecutar pruebas con cobertura
+# Run tests with coverage
 go test -cover ./...
 
-# Ejecutar pruebas específicas
+# Run specific tests
 go test ./internal/ghmcp/...
 ```
 
 ## FAQ
 
-### ¿Necesito un token de GitHub?
-Sí, necesitas un token de acceso personal de GitHub con los permisos adecuados. Puedes crear uno en [GitHub Settings > Developer settings > Personal access tokens](https://github.com/settings/tokens).
+### Do I need a GitHub token?
+Yes, you need a GitHub personal access token with appropriate permissions. You can create one at [GitHub Settings > Developer settings > Personal access tokens](https://github.com/settings/tokens).
 
-### ¿Es compatible con el servidor oficial de GitHub MCP?
-Sí, HyperGitHub MCP es 100% compatible con el servidor oficial. Todas las herramientas del servidor oficial funcionan exactamente igual.
+### Is it compatible with the official GitHub MCP server?
+Yes, HyperGitHub MCP is 100% compatible with the official server. All tools from the official server work exactly the same.
 
-### ¿Qué ventajas tiene sobre el servidor oficial?
-- Herramienta `delete_repository` exclusiva
-- Optimizaciones de rendimiento
-- Mejores mensajes de error
-- Código más mantenible
+### What advantages does it have over the official server?
+- Exclusive `delete_repository` tool
+- Performance optimizations
+- Better error messages
+- More maintainable code
 
-### ¿Puedo contribuir al proyecto?
-¡Sí! Las contribuciones son bienvenidas. Por favor, lee [CONTRIBUTING.md](https://github.com/lalax-systems/hypergithub-mcp/blob/main/CONTRIBUTING.md) para más detalles.
+### Can I contribute to the project?
+Yes! Contributions are welcome. Please read [CONTRIBUTING.md](https://github.com/lalax-systems/hypergithub-mcp/blob/main/CONTRIBUTING.md) for details.
 
-## Soporte
+## Support
 
-### Reportar problemas
-Si encuentras un problema, por favor:
-1. Revisa la [FAQ](#faq) primero
-2. Busca en [issues existentes](https://github.com/lalax-systems/hypergithub-mcp/issues)
-3. Si no encuentras una solución, [crea un nuevo issue](https://github.com/lalax-systems/hypergithub-mcp/issues/new)
+### Reporting issues
+If you find an issue, please:
+1. Check the [FAQ](#faq) first
+2. Search [existing issues](https://github.com/lalax-systems/hypergithub-mcp/issues)
+3. If you don't find a solution, [create a new issue](https://github.com/lalax-systems/hypergithub-mcp/issues/new)
 
-### Discusiones
-Para preguntas, sugerencias y discusiones generales, visita las [Discusiones de GitHub](https://github.com/lalax-systems/hypergithub-mcp/discussions).
+### Discussions
+For questions, suggestions, and general discussions, visit [GitHub Discussions](https://github.com/lalax-systems/hypergithub-mcp/discussions).
 
-### Contacto directo
+### Direct contact
 - **Email**: info@lalax.com
 - **Twitter**: [@lalax_systems](https://twitter.com/lalax_systems)
-- **Sitio web**: [lalax.com](https://lalax.com)
+- **Website**: [lalax.com](https://lalax.com)
 
 ---
 
-**Última actualización**: 28 de enero de 2026  
-**Versión**: 1.0.0  
-**Licencia**: MIT
+**Last updated**: January 28, 2026  
+**Version**: 1.0.0  
+**License**: MIT
